@@ -33,4 +33,4 @@ cmp dword ptr [esi+00016060],00 //[update offset in brackets as well]
 db 7C 9A
 
 dealloc(Hook)
-© 2018 GitHub, Inc.
+
