@@ -84,4 +84,3 @@ dealloc(ItemFilter)
 dealloc(ItemList)
 dealloc(Mesos)
 dealloc(Mode)
-© 2018 GitHub, Inc.
