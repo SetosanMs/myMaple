@@ -4,7 +4,7 @@ label(skill_id_return)
 label(normal)
 define(skill_id,#%arg1) //Change #00000000 to your skillID
 
-alloc(delay,4)
+alloc(delay,8)
 
 delay:
 dw 00
@@ -22,12 +22,10 @@ nop
 skill_id_return:
 
 skill_id_hook:
-call GetTickCount
-mov edx,eax
-sub edx, [delay]
-cmp [delay],#%arg2
-jl normal
-mov [delay],eax
+inc [delay]
+cmp [delay],#1
+jne normal
+mov [delay],00
 mov [esi+00015284],skill_id //3rd addy dword ptr
 jmp skill_id_return
 normal:
