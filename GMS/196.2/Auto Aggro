@@ -12,7 +12,7 @@ mov ebp,esp
 push -01
 jmp return
 
-024DDD60: // CVecCtrlMob::WorkUpdateActive
+02651C30: // CVecCtrlMob::WorkUpdateActive
 jmp Aggro
 return:
 
