@@ -29,7 +29,7 @@ mov [delay],00
 mov [esi+00015284],skill_id //3rd addy dword ptr
 jmp skill_id_return
 normal:
-cmp dword ptr [esi+0001528C],00 //3rd addy dword ptr
+cmp dword ptr [esi+00015284],00 //3rd addy dword ptr
 jmp skill_id_return
 
 02507BE4:  //[4th addy]
