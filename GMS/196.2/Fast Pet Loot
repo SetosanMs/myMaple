@@ -46,7 +46,6 @@ call 00852220
 01795AAD: // 7E ? 85 FF 74 ? 8B ? E8 ? ? ? ? EB (call below)
 call 00CAF4F0
 
-
 dealloc(ItemHook)
 dealloc(ItemX)
 dealloc(ItemY)
