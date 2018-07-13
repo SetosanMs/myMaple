@@ -1,7 +1,7 @@
 [ENABLE]
 024613ED: //don't push the extra shit (pet index)
 db 90
-call 02799560 //first [function start] : E8 ? ? ? ? E8 ? ? ? ? 83 ? ? 8B ? ? 64 89 0D 00 00 00 00 59 5F 5E 5B 8B E5 5D C2 08 00 68
+call 027993A0 //first [function start] : E8 ? ? ? ? E8 ? ? ? ? 83 ? ? 8B ? ? 64 89 0D 00 00 00 00 59 5F 5E 5B 8B E5 5D C2 08 00 68
 
 //patch out clientsided checks for pet feed skill
 //or: 2B ? ? ? ? ? 3D ? ? ? ? 0F 82 [THIRD] JB BELOW
