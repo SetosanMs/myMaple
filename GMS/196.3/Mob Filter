@@ -1,0 +1,77 @@
+[ENABLE]
+alloc(MobList,2048)
+
+alloc(MobFilter1,256)
+label(Filter1)
+label(FilterMobs1)
+label(Exit1)
+
+alloc(MobFilter2,256)
+label(FilterMobs2)
+label(Filter2)
+label(Exit2)
+
+MobList:
+%arg1
+dd #9999999 // Invisible Mob
+dd 00000000
+
+016275FD:
+jmp MobFilter1
+
+MobFilter1:
+call 0080D700 // Original Opcodes
+push ebx
+mov ebx,MobList
+
+FilterMobs1:
+cmp eax,[ebx]
+je Filter1
+cmp [ebx],00
+je Exit1
+add ebx,4
+jmp FilterMobs1
+
+Filter1:
+pop ebx
+jmp 01627792 // Address below last call at end of CMobPool::SetLocalMob
+
+Exit1:
+pop ebx
+jmp 016275FD+5  //hook1
+
+01626D50:
+jmp MobFilter2
+
+MobFilter2:
+push ebx
+mov ebx,MobList
+
+FilterMobs2:
+cmp eax,[ebx]
+je Filter2
+cmp [ebx],00
+je Exit2
+add ebx,4
+jmp FilterMobs2
+
+Filter2:
+pop ebx
+call 01624DE0 // Original Opcodes - CMobPool::GetMob
+jmp 01627006 // Address below last call at end of CMobPool::OnMobEnterField
+
+Exit2:
+pop ebx
+call 01624DE0 // Original Opcodes - CMobPool::GetMob
+jmp 01626D50+5   //hook2
+
+[DISABLE]
+016275FD: // Address inside CMobPool::SetLocalMob: E8 ? ? ? ? 89 45 ? 85 F6 0F 85 ? ? ? ? 50
+call 0080D700 // CInPacket::Decode4
+
+01626D50: // Address inside CMobPool::OnMobEnterField: E8 ? ? ? ? 8B F8 85 FF 74 ? 6A ? 8B CF
+call 01624DE0 // CMobPool::GetMob
+
+dealloc(MobFilter1)
+dealloc(MobFilter2)
+dealloc(MobList)
