@@ -15,7 +15,7 @@ call 00852220
 mov [ItemY],eax
 ret
 
-0112E790:
+0112E7A6:
 call GetItemXY
 
 Hook:
@@ -34,16 +34,16 @@ mov ecx,ebx
 call 00CAF500
 jmp Return
 
-01795B85:
+01795B8D:
 jmp Hook
 Return:
 
 
 [DISABLE]
-0112E790: //55 8b ? ? ? 8b ? 8d ? ? e8 ? ? ? ? 8b ? ? 8b ? 89 ? e8 [below 2nd call
+0112E7A6: //55 8b ? ? ? 8b ? 8d ? ? e8 ? ? ? ? 8b ? ? 8b ? 89 ? e8 [below 2nd call
 call 00852220
 
-01795B85: // 7E ? 85 FF 74 ? 8B ? E8 ? ? ? ? EB (call below)
+01795B8D: // 7E ? 85 FF 74 ? 8B ? E8 ? ? ? ? EB (call below)
 call 00CAF500
 
 
